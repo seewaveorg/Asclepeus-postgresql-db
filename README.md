@@ -105,7 +105,9 @@ Login to the PostgreSQL server using:
 ```bash
 docker exec -it postgresql sudo -u postgres psql
 
+// exit the console
 
+/q     < then press enter>
 
 ```
 
