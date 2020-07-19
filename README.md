@@ -134,6 +134,15 @@ By default connections to the PostgreSQL server need to authenticated using a pa
 docker run --name postgresql -itd --restart always \
   --env 'PG_TRUST_LOCALNET=true' \
   sameersbn/postgresql:10-2
+
+
+// for local deployments
+
+
+docker run --name postgresql -itd --restart always \
+  --env 'PG_TRUST_LOCALNET=true' \
+  seewave/postgresql
+
 ```
 
 > **Note**
@@ -164,7 +173,30 @@ A new PostgreSQL database user can be created by specifying the `DB_USER` and `D
 docker run --name postgresql -itd --restart always \
   --env 'DB_USER=dbuser' --env 'DB_PASS=dbuserpass' \
   sameersbn/postgresql:10-2
+
+
+  // for localdeployments
+
+  docker run --name postgresql -itd --restart always \
+  --publish 5432:5432 \
+  --volume /srv/docker/postgresql:/var/lib/postgresql \
+  --env 'PG_TRUST_LOCALNET=true' \
+  --env 'DB_USER=dbuser' --env 'DB_PASS=dbuserpass' \
+  seewave/postgresql
+
+
 ```
+Above seewave configuration can be used to log in to the server using pgamdin also.
+db : postgres
+user : dbuser
+password : dbuserpass
+
+Further PgAdmin installation guidence is given for the dabian in following url.
+
+https://unix.stackexchange.com/questions/467873/how-to-install-pgadmin-4-on-linux-mint
+
+
+
 
 > **Notes**
 >
